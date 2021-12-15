@@ -20,29 +20,34 @@ A reward of 1 is given when the agent reaches the goal. For every step in the ma
 The [agents](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/master/agents) directory contains the most popular algorithms to solve the environment using a table to store the state and action spaces.
 
 ## Monte Carlo
-It was developed following the pseudocode of the Monte Carlo First-Visit method, with 2 major differences:
-1. the exploration strategy of the agent follows a *strethed exponential decay function* to slowly lower the epsilon value of the epsilon greedy policy
+It was developed following the pseudocode of the Monte Carlo First-Visit method (available in [Sutton & Barto](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)), with 2 major differences:
+1. the exploration strategy of the agent follows a *stretched exponential decay function* to slowly lower the epsilon value of the epsilon greedy policy
 2. the returns average is calculated using the *running average* formula for performance reasons
+The code implementation is available [here](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/main/agents/MC_first_visit_agent.py).
 
 ## Q-learning
-It was developed following the pseudocode of the Q-Learning method following an UCB (Upper Confidence Bound) exploration policy.
+It was developed following the pseudocode of the Q-Learning method (available in [Sutton & Barto](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)) following an UCB (Upper Confidence Bound) exploration policy. The code implementation is available [here](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/main/agents/Q_learning_agent.py).
+
+## Double Q-learning
+It was developed following the pseudocode available [here](https://papers.nips.cc/paper/2010/hash/091d584fced301b442654dd8c23b3fc9-Abstract.html) (Hasselt et al., 2010). The code implementation is available [here](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/main/agents/Double_Q_learning_agent.py).
 
 ## SARSA
-It was developed following the pseudocode of the SARSA method following an UCB (Upper Confidence Bound) exploration policy.
+It was developed following the pseudocode of the SARSA method (available in [Sutton & Barto](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)) following an UCB (Upper Confidence Bound) exploration policy. The code implementation is available [here](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/main/agents/SARSA_agent.py).
 
 ## Dyna-q plus
-It was developed following the pseudocode of the Dyna-Q-plus method following an UCB (Upper Confidence Bound) exploration policy.
+It was developed following the pseudocode of the Dyna-Q-plus method (available in [Sutton & Barto](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)) following an UCB (Upper Confidence Bound) exploration policy. The code implementation is available [here](https://github.com/giannpelle/RL-OpenAI-gym-maze/blob/main/agents/Dyna_q_plus_agent.py).
 
 ## Installation
 
 ```bash
-cd gym-maze
+cd RL-OpenAI-gym-maze
 conda env create -f environment.yml
 conda activate gym-maze
 python setup.py install
 
 python maze_player.py --method=montecarlo
 python maze_player.py --method=qlearning
+python maze_player.py --method=doubleqlearning
 python maze_player.py --method=sarsa
 python maze_player.py --method=dynaqplus
 ```

@@ -4,6 +4,7 @@ sys.path.insert(1, os.path.abspath("agents/"))
 from agents.MC_first_visit_agent import MCFirstVisitAgent
 from agents.SARSA_agent import SARSAAgent
 from agents.Q_learning_agent import QLearningAgent
+from agents.Double_Q_learning_agent import DoubleQLearningAgent
 from agents.Dyna_q_plus_agent import DynaQplusAgent
 
 import argparse
@@ -33,6 +34,11 @@ def run_q_learning_method(*, env):
     q_table, rewards = qlearning_agent.off_policy_train()
     qlearning_agent.run_optimal(with_q_table=q_table)
 
+def run_double_q_learning_method(*, env):
+    double_qlearning_agent = DoubleQLearningAgent(env=env)
+    q_table, rewards = double_qlearning_agent.off_policy_train()
+    double_qlearning_agent.run_optimal(with_q_table=q_table)
+
 def run_dyna_q_plus_method(*, env):
     dyna_q_plus_agent = DynaQplusAgent(env=env)
     q_table, rewards = dyna_q_plus_agent.train_with_planning()
@@ -41,6 +47,7 @@ def run_dyna_q_plus_method(*, env):
 switcher = {
     "montecarlo": run_monte_carlo_method,
     "qlearning": run_q_learning_method,
+    "doubleqlearning": run_double_q_learning_method,
     "sarsa": run_sarsa_method,
     "dynaqplus": run_dyna_q_plus_method
 }
